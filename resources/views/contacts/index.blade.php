@@ -2,26 +2,21 @@
 
 @section('content')
     <div class="govuk-width-container">
-        <h1 class="govuk-heading-l">Contacts List</h1>
+        <h1 class="govuk-heading-l">Contacts List (Total: {{ $contacts->total() }})</h1>
 
-        <!-- Success Message -->
-        @if(session('alert-success'))
-            <div class="govuk-notification-banner govuk-notification-banner--success" role="alert">
-                <div class="govuk-notification-banner__content">
-                    <p class="govuk-body">{{ session('alert-success') }}</p>
-                </div>
-            </div>
-        @endif
+        @include('partials.session_flash')
 
         <a href="{{ route('contacts.create') }}" class="govuk-button">Add New Contact</a>
 
-        <table class="govuk-table">
+        <input type="text" id="search" class="govuk-input" placeholder="Search Contacts...">
+
+        <table class="govuk-table" id="contacts-table">
             <thead class="govuk-table__head">
                 <tr class="govuk-table__row">
                     <th class="govuk-table__header">Forenames</th>
                     <th class="govuk-table__header">Surname</th>
                     <th class="govuk-table__header">Email</th>
-                    <th class="govuk-table__header">Phone</th>
+                    <th class="govuk-table__header">Telephone</th>
                     <th class="govuk-table__header">Actions</th>
                 </tr>
             </thead>
@@ -35,11 +30,10 @@
                         <td class="govuk-table__cell">
                             <a href="{{ route('contacts.show', $contact->id) }}" class="govuk-button govuk-button--secondary govuk-button--small">Detail</a>
                             <a href="{{ route('contacts.edit', $contact->id) }}" class="govuk-button govuk-button--secondary govuk-button--small">Edit</a>
-                            <form action="{{ route('contacts.destroy', $contact->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="govuk-button govuk-button--warning govuk-button--small" onclick="return confirm('Are you sure?');">Delete</button>
-                            </form>
+                            
+                            <button class="govuk-button govuk-button--warning delete-contact" data-id="{{ $contact->id }}">
+                                Delete
+                            </button>
                         </td>
                     </tr>
                 @endforeach
@@ -51,3 +45,7 @@
         </div>
     </div>
 @endsection
+
+@push('page-scripts')
+<script type="text/javascript" src="{{ asset('js/contact.js') }}"></script>
+@endpush

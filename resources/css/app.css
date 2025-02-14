@@ -1,4 +1,5 @@
-@use "govuk-frontend/dist/govuk/all";
+@import "govuk-frontend/dist/govuk/all";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -6,14 +6,7 @@
 
         <h1 class="govuk-heading-xl">Contact Details</h1>
 
-        <!-- Success Message -->
-        @if(session('alert-success'))
-            <div class="govuk-notification-banner govuk-notification-banner--success" role="alert">
-                <div class="govuk-notification-banner__content">
-                    <p class="govuk-body">{{ session('alert-success') }}</p>
-                </div>
-            </div>
-        @endif
+        @include('partials.session_flash')
 
         <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">

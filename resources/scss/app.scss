@@ -1,0 +1,5 @@
+$govuk-fonts-path: 'govuk-frontend/dist/govuk/build/assets/fonts/';
+@import "govuk-frontend/dist/govuk/all";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

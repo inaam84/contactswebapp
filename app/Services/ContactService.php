@@ -21,10 +21,10 @@ class ContactService
     /**
      * Get all contacts with pagination.
      */
-    public function getAll($perPage = 15)
+    public function getAll($perPage = 15, $orderBy = 'forenames')
     {
         return $this->contactRepository
-            ->getAll($perPage);
+            ->getAll($perPage, $orderBy);
     }
 
     /**

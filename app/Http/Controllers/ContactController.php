@@ -51,7 +51,7 @@ class ContactController extends Controller
                 ->create($request->all());
 
             return redirect()->route('contacts.index')
-                ->with('success', 'Contact created successfully.');
+                ->with(['alert-success' => 'Contact created successfully.']);
         } catch (InvalidArgumentException $e) {
             return back()->withErrors(['alert-warning' => $e->getMessage()]);
         } catch (RuntimeException $e) {

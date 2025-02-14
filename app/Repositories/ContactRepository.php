@@ -16,9 +16,10 @@ class ContactRepository
     /**
      * Get all contacts, optionally paginated.
      */
-    public function getAll($perPage = 15)
+    public function getAll($perPage = 15, $orderBy = 'forenames')
     {
         return $this->contact
+            ->orderBy($orderBy)
             ->paginate($perPage);
     }
 
