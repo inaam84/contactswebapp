@@ -18,7 +18,7 @@ A simple **Contacts Management** application built with Laravel and styled using
 ### 1️⃣ Clone the Repository
 ```sh
 git clone https://github.com/inaam84/contactswebapp.git
-cd contacts-management
+cd contactswebapp
 ```
 
 ### 2️⃣ Install Dependencies
